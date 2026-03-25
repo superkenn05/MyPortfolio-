@@ -25,8 +25,8 @@ html { scroll-behavior: smooth; }
 body { font-family: 'DM Sans', sans-serif; background: var(--off); color: var(--text); overflow-x: hidden; }
 
 #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-.particle { position: absolute; border-radius: 50%; background: radial-gradient(circle, var(--green-mid), transparent 70%); opacity: 0; animation: floatP linear infinite; }
-@keyframes floatP { 0% { transform: translateY(100vh) scale(.3); opacity: 0; } 10% { opacity: .3; } 90% { opacity: .15; } 100% { transform: translateY(-10vh) scale(1); opacity: 0; } }
+.particle { position: absolute; border-radius: 50%; background: radial-gradient(circle, #3ec97c, #a8e6c5 50%, transparent 70%); opacity: 0; animation: floatP linear infinite; }
+@keyframes floatP { 0% { transform: translateY(100vh) scale(.3); opacity: 0; } 10% { opacity: .55; } 85% { opacity: .35; } 100% { transform: translateY(-10vh) scale(1); opacity: 0; } }
 
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px 6vw; background: rgba(255,255,255,.92); backdrop-filter: blur(18px); border-bottom: 1px solid var(--gray); transition: box-shadow .3s; }
 nav.scrolled { box-shadow: 0 4px 30px rgba(60,120,80,.10); }
@@ -167,9 +167,8 @@ textarea.form-input { resize: vertical; min-height: 120px; }
 footer { background: var(--text); color: rgba(255,255,255,.55); padding: 32px 6vw; text-align: center; font-size: .84rem; }
 footer strong { color: var(--green); }
 
-.reveal { opacity: 1; transform: none; transition: opacity .65s ease, transform .65s ease; }
-.js-loaded .reveal { opacity: 0; transform: translateY(28px); }
-.js-loaded .reveal.visible { opacity: 1; transform: none; }
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
 
 @media (max-width: 900px) {
   #hero { flex-direction: column; padding-top: 100px; gap: 36px; }
@@ -498,7 +497,7 @@ footer strong { color: var(--green); }
         <div class="contact-icon">✉️</div>
         <div>
           <div class="contact-lbl">Email</div>
-          <div class="contact-val"><a href="mailto:markkenmadrid05@gmail.com" style="color:var(--text);text-decoration:none;">markkenmadrid05@gmail.com</a></div>
+          <div class="contact-val"><a href="/cdn-cgi/l/email-protection#fe939f8c95959b90939f9a8c979acecbbe99939f9792d09d9193" style="color:var(--text);text-decoration:none;"><span class="__cf_email__" data-cfemail="6c010d1e07070902010d081e05085c592c0b010d0500420f0301">[email&#160;protected]</span></a></div>
         </div>
       </div>
       <div class="contact-info-item">
@@ -545,21 +544,19 @@ footer strong { color: var(--green); }
   <p style="margin-top:6px;font-size:.76rem;">Made with ❤️ in Cavite, Philippines</p>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
   emailjs.init('vDPM8NyqsNxM2yuOG');
 </script>
 <script>
-// Mark body so CSS reveal animation only applies when JS is running
-document.body.classList.add('js-loaded');
-
+// Scroll nav shadow// Particles - bigger and more visible
 (function() {
   var c = document.getElementById('particles');
-  for (var i = 0; i < 16; i++) {
+  for (var i = 0; i < 22; i++) {
     var p = document.createElement('div');
     p.className = 'particle';
-    var s = Math.random() * 60 + 20;
-    p.style.cssText = 'width:' + s + 'px;height:' + s + 'px;left:' + (Math.random()*100) + '%;animation-duration:' + (Math.random()*14+12) + 's;animation-delay:-' + (Math.random()*14) + 's;';
+    var s = Math.random() * 100 + 40;
+    p.style.cssText = 'width:' + s + 'px;height:' + s + 'px;left:' + (Math.random()*100) + '%;animation-duration:' + (Math.random()*12+10) + 's;animation-delay:-' + (Math.random()*12) + 's;';
     c.appendChild(p);
   }
 })();
@@ -575,19 +572,15 @@ document.addEventListener('click', function(e) {
   if (!m.contains(e.target) && !e.target.closest('.hamburger')) m.classList.remove('open');
 });
 
-// Fallback: show everything after 800ms in case observer never fires
-setTimeout(function() {
-  document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
-}, 800);
-
+// Scroll reveal - animate sections as they enter view
 var ro = new IntersectionObserver(function(entries) {
   entries.forEach(function(e, i) {
     if (e.isIntersecting) {
-      setTimeout(function() { e.target.classList.add('visible'); }, i * 60);
+      setTimeout(function() { e.target.classList.add('visible'); }, i * 100);
       ro.unobserve(e.target);
     }
   });
-}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.reveal').forEach(function(el) { ro.observe(el); });
 
 var so = new IntersectionObserver(function(entries) {
