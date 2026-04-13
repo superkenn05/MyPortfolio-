@@ -187,7 +187,7 @@ footer strong { color: var(--green); }
 <div id="particles"></div>
 
 <nav id="navbar">
-  <a href="#hero" class="nav-logo">mk<span>.</span>madrid</a>
+  <a href="#hero" class="nav-logo">Devkenn<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -218,7 +218,7 @@ footer strong { color: var(--green); }
     <div class="hero-badge">Available for Opportunities</div>
     <h1 class="hero-name">
       <span class="hi">Hi, I'm 👋</span>
-      Mark Ken Felix
+      Mark Ken
     </h1>
     <p class="hero-role">Full Stack Developer · <span>React &amp; Firebase</span></p>
     <p class="hero-desc">
@@ -548,7 +548,25 @@ footer strong { color: var(--green); }
 <script>
   emailjs.init('vDPM8NyqsNxM2yuOG');
 </script>
-<script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+  import { initializeApp } from "firebase/app";
+  import { getAnalytics } from "firebase/analytics";
+
+  const firebaseConfig = {
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
 // Scroll nav shadow// Particles - bigger and more visible
 (function() {
   var c = document.getElementById('particles');
@@ -611,10 +629,13 @@ if (hc) {
 
 function handleSubmit(e) {
   e.preventDefault();
+const handleSubmit = (e) => {
   var btn = document.getElementById('sendBtn');
   var status = document.getElementById('form-status');
   var name = document.getElementById('fname').value;
   var email = document.getElementById('femail').value;
+  var name = document.querySelector('#fname').value;
+  var email = document.querySelector('#femail').value;
   var message = document.getElementById('fmsg').value;
 
   btn.textContent = 'Sending...';
@@ -654,6 +675,11 @@ function handleSubmit(e) {
     status.textContent = 'Opening your email app as fallback...';
   });
 }
+};
+
+// Attach listener within module scope
+const contactForm = document.getElementById('contactForm');
+if (contactForm) contactForm.addEventListener('submit', handleSubmit);
 </script>
 </body>
 </html>
