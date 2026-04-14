@@ -105,20 +105,19 @@ section { padding: 88px 6vw; position: relative; }
 .skill-bar-wrap { margin-top: 8px; background: var(--gray); border-radius: 50px; height: 4px; overflow: hidden; }
 .skill-bar { height: 100%; background: linear-gradient(90deg, var(--green), #1d7a4a); border-radius: 50px; width: 0; transition: width 1.2s ease .2s; }
 
-#projects { background: var(--white); }
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
-.project-card { background: var(--off); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); transition: transform .35s, box-shadow .35s; border: 1.5px solid var(--gray); }
+.project-card { background: var(--off); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); transition: transform .35s, box-shadow .35s; border: 1.5px solid var(--gray); display: flex; flex-direction: column; }
 .project-card:hover { transform: translateY(-10px) rotateX(3deg); box-shadow: var(--shadow-lg); }
 .project-banner { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; }
 .pb-green { background: linear-gradient(135deg, #c8f5de, #a0e8c0); }
 .pb-teal  { background: linear-gradient(135deg, #c0f0f0, #90d8d8); }
 .pb-lime  { background: linear-gradient(135deg, #d8f5c0, #b0e890); }
-.project-body { padding: 20px 22px 24px; }
+.project-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
 .project-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: .98rem; margin-bottom: 7px; }
 .project-desc { font-size: .84rem; color: var(--text-light); line-height: 1.6; margin-bottom: 14px; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
 .project-tag { background: var(--green-light); color: #1d7a4a; padding: 3px 10px; border-radius: 50px; font-size: .7rem; font-weight: 500; }
-.project-links { display: flex; gap: 8px; }
+.project-links { display: flex; gap: 8px; margin-top: auto; }
 .project-btn { flex: 1; padding: 9px; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: .79rem; font-weight: 600; text-align: center; cursor: pointer; transition: .2s; border: none; text-decoration: none; display: block; }
 .project-btn.primary { background: var(--green); color: #fff; }
 .project-btn.primary:hover { background: #2db868; }
@@ -244,7 +243,7 @@ footer strong { color: var(--green); }
         <span class="chip">Figma</span>
       </div>
       <div class="card-stats">
-        <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Projects</div></div>
+        <div class="stat"><div class="stat-num">4</div><div class="stat-lbl">Projects</div></div>
         <div class="stat"><div class="stat-num">1</div><div class="stat-lbl">Hackathon</div></div>
         <div class="stat"><div class="stat-num">🥉</div><div class="stat-lbl">3rd Place</div></div>
       </div>
@@ -358,6 +357,26 @@ footer strong { color: var(--green); }
   </div>
   <div class="projects-grid">
     <div class="project-card reveal">
+      <div class="project-banner pb-teal">🐕</div>
+      <div class="project-body">
+        <div class="project-title">FurScan – Capstone Project</div>
+        <div class="project-desc">An RFID-based animal tracking system for stray monitoring and incident reporting. Features animal profiling, real-time tracking, adoption requests, and analytics.</div>
+        <div class="project-tags">
+          <span class="project-tag">React Native</span>
+          <span class="project-tag">Node.js</span>
+          <span class="project-tag">Firebase</span>
+          <span class="project-tag">Material UI</span>
+        </div>
+        <div class="project-links">
+          <a href="https://drive.google.com/uc?export=download&id=133abxhzppQIaiXBTgN2S-QJHeR-PESQz" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  class="project-btn primary">Download APK</a>
+          <a href="#" class="project-btn ghost">GitHub</a>  
+        </div>
+      </div>
+    </div>
+    <div class="project-card reveal">
       <div class="project-banner pb-green">📚</div>
       <div class="project-body">
         <div class="project-title">ATI CALABARZON e-Library</div>
@@ -368,7 +387,7 @@ footer strong { color: var(--green); }
           <span class="project-tag">Material UI</span>
         </div>
         <div class="project-links">
-          <a href="https://elibraryati4a.com/home" target="_blank" class="project-btn primary">View Demo</a>
+          <a href="https://elibraryati4a.com/home" target="_blank" class="project-btn primary">View Live</a>
           <a href="#" class="project-btn ghost">GitHub</a>
         </div>
       </div>
@@ -384,7 +403,7 @@ footer strong { color: var(--green); }
           <span class="project-tag">UI/UX</span>
         </div>
         <div class="project-links">
-          <a href="#" class="project-btn primary">View Demo</a>
+          <a href="#" class="project-btn primary">Restricted Access</a>
           <a href="#" class="project-btn ghost">GitHub</a>
         </div>
       </div>
@@ -400,7 +419,7 @@ footer strong { color: var(--green); }
           <span class="project-tag">E-Commerce</span>
         </div>
         <div class="project-links">
-          <a href="#" class="project-btn primary">View Demo</a>
+          <a href="https://9000-firebase-studio-1773459028663.cluster-isls3qj2gbd5qs4jkjqvhahfv6.cloudworkstations.dev" class="project-btn primary">View Demo</a>
           <a href="#" class="project-btn ghost">GitHub</a>
         </div>
       </div>
